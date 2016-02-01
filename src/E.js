@@ -3,7 +3,7 @@
 * @class 
 */
 function E(){}
-(function(global,E){
+(function(window,E){
 	if(!E){
 		return false;
 	}
@@ -69,7 +69,9 @@ function E(){}
 		var d = param(obj.data),
 	  		url = obj.url + (obj.url.indexOf("?") < 0 ? "?" : "&") + d;
 	  	// 忽略超长 url 请求，避免资源异常。
-	  	if(url.length > 7713){return data.callback();}
+	  	if(url.length > 7713){
+	  		return;
+	  	}
 
 	  	if(window.navigator.onLine){
 	  		var img = new Image(1,1);
@@ -160,16 +162,16 @@ function E(){}
 	* @public
 	*/
 	E.error = function(obj){
-		var _ = {};
+		var params_obj = {};
 		if(obj instanceof Error){
-			_.info = (obj.message || obj.description) +" "+(obj.stack || obj.stacktrace),
-	      	_.grade = 10,
-	      	_.module = "try_catch";
+			params_obj.info = (obj.message || obj.description) +" "+(obj.stack || obj.stacktrace),
+	      	params_obj.grade = 10,
+	      	params_obj.module = "try_catch";
 		}else{
-			_ = obj;
+			params_obj = obj;
 		}
 
-		error(_);
+		error(params_obj);
 		return true;
 	}
 
@@ -178,8 +180,8 @@ function E(){}
 	* @params {String}
 	* @public
 	*/
-	global.onerror = function(message, file, line, column){
-		var obj = {
+	window.onerror = function(message, file, line, column){
+		var params_obj = {
 			info:message,
 			file:file,
 			line:line,
@@ -187,11 +189,11 @@ function E(){}
 			grade:10,
 			module:"global"
 		};
-		error(obj);
+		error(paramsObj);
     	return true;
 	};
 
 	//TODO
 	//DOMError   DOMException
 
-})(this,this.E);
+})(window,this.E);
