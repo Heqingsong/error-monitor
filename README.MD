@@ -5,7 +5,7 @@
 @version v1
 @time 2016-01-30
 @copyright MIT
-@codeReview ["@子慕大诗人"]("https://github.com/zimv");
+@codeReview ["@子慕大诗人"](https://github.com/zimv);
 
 ## 摘要
 在复杂的网络环境和浏览器环境下，自测、QA测试以及 Code Review 都是不够的，如果对页面稳定性和准确性要求较高，就必须有一套完善的代码异常监控体系，本文用于介绍**E.js**前端代码异常监控解决方案。
