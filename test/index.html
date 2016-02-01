@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>前端代码异常监控解决方案</title>
+</head>
+<body data-api="http://aa.api.baidu.com/" data-name="jule" data-wxid="oEcxUtyS2nCnem1cmF5x6Qk2oCAE" data-play="http://wx.baidu.com" data-base="http://daojia.baidu.com/">
+<h1>前端代码异常监控解决方案</h1>
+<h4>为满足业务快速增长，特编写该解决方案，方便开发人员第一时间快速定位BUG位置！</h4>
+<script src="../E.min.js"></script>
+<!-- E.js 基础配置 -->
+<script type="text/javascript">
+	var _temp_ = document.getElementsByTagName("body")[0]["dataset"];
+	E.init({
+		url:_temp_.api,
+		name:_temp_.name,
+		openId:_temp_.wxid
+	});
+</script>
+<!-- 防止跨域JS问题 返回HTTP头加  Access-Control-Allow-Origin:* -->
+<script src="test.js" crossorigin></script>
+</body>
+</html>
